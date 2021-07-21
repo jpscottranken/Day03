@@ -1,0 +1,52 @@
+body {
+    background: blanchedalmond;
+}
+
+.contactPara {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+div#contactFormDiv {
+    display: block;
+    text-align: center;
+}
+
+.form {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contactLabel {
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+    margin-right: 1rem;
+    font-weight: bold;
+}
+
+.contactTextBox {
+	text-align: center;
+	font-weight: bold;
+}
+
+.contactButton {
+	text-align: center;
+}
+
+.flex-parent {
+    display: flex;
+}
+
+.contactButton {
+    justify-content: center;
+}
+
+span.contactSpan {
+    font-weight: bold;
+    color: red;
+    text-transform: uppercase;
+    white-space: nowrap;
+}

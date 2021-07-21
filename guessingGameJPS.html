@@ -1,0 +1,84 @@
+<!--
+	Create a simple guess the number type game. 
+	
+	It should choose a random number between 1 and 100, 
+	then challenge the player to guess the number in 10 turns. 
+	
+	After each turn the player should be told if they are right
+	or wrong, and if they are wrong, whether the guess was too 
+	low or too high.
+	
+	It should also tell the player what numbers they previously 
+	guessed. The game will end once the player guesses correctly, 
+	or once they run out of turns. 
+	
+	When the game ends, the player should be given an option to 
+	start playing again.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Number guessing game</title>
+  </head>
+
+  <body onload="startNewGame();">
+	<script>
+		const MINGUESS 				=   1;	//	Smallest allowable guess
+		const MAXGUESS 				= 100;	//	Largest  allowable guess
+		const MAXNUMGUESSESALLOWED	=  10;	//	Most guesses allowed/game
+		let   numGuesses 			=   0;	//	Number of guesses this game
+		let   randomNumber          =   0;	//	Generated random number
+		
+		//	This function will start a new game
+		function startNewGame() {
+			alert("You Are Starting A New Game!!!");
+			numGuesses = 0;
+			gameOver   = false;
+			randomNumber  = Math.floor(Math.random() * 100) + 1;
+			
+			while (!gameOver) {
+				playGame();
+			}
+			
+			startNewGame();
+		}
+		
+		function playGame() {
+			//	Ask user to input a number between 1 and 100
+			let guess = parseInt(prompt("Please guess a number between 1 - 100", "50"));
+		
+			//	Check for non-numeric or out-of-range guess
+			while ((isNaN(guess)) || ((guess < MINGUESS) || (guess > MAXGUESS))) {
+				alert("Non-Numeric or Out Of Range Guess Attempted!  Invalid.  Try Again.");
+				guess = parseInt(prompt("Please guess a number between 1 - 100", "50"));
+			}
+		
+			++numGuesses;
+		
+			//	Check to see if user has already made 10 guesses
+			//	If so, they are done.
+			if (numGuesses > MAXNUMGUESSESALLOWED) {
+				alert ("Maximum Number Of Guesses Reached.  You Lose.");
+				gameOver = true;
+				return;
+			}
+		
+			//	Check to see if current guess was too low
+			if (guess < randomNumber) {
+				alert("Last guess was too low!");
+				gameOver = false;
+			}
+			else if (guess > randomNumber) {
+				alert("Last guess was too high!");
+				gameOver = false;
+			}
+			else if (guess === randomNumber) {
+				alert("Congratulations! You guess the random number " +
+					  randomNumber + " in " + numGuesses + " guesses.");
+				gameOver = true;
+			}
+		}
+	</script>
+  </body>
+</html>
